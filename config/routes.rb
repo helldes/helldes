@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+
+  get 'sessions/login'
+  post 'sessions' => 'sessions#create'
+  get 'sessions/logout'
+
   resources :posts
+
+  get 'registration' => 'users#new'
+  post 'users' => 'users#create'
 
   get 'pages/index'
 
