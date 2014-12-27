@@ -19,8 +19,8 @@
         <td><%= post.body %></td>
         <td><%= post.tags %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) if post.user_id == current_user.id %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if post.user_id == current_user.id %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) if (current_user)&&(post.user_id == current_user.id) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if (current_user)&&(post.user_id == current_user.id) %></td>
         <td><%= User.find(post.user_id).name if post.user_id %></td>
       </tr>
     <% end %>
