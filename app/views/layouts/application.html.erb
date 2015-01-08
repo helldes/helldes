@@ -7,11 +7,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<table class="header-table" width="90%" border="1" align="center">
+  <tbody>
+  <tr>
+    <td width="60%" height="100"> </td>
+    <td width="13%">
+      <%= if !current_user
+            link_to 'Registration', registration_path
+          end
+      %>
+    </td>
+    <td width="13%">
+      <%= if current_user
+            current_user.name
+          else
+            link_to 'Login', sessions_login_path
+          end
+      %>
+    </td>
+    <td width="13%">
+      <%= if current_user
+              link_to 'Log Out', sessions_logout_path
+          end
+      %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<table width="90%" border="1">
+  <tbody>
+  <tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  </tr>
+  </tbody>
+</table>
 <%= link_to 'To Main', root_path %>
-<%= link_to 'Registration', registration_path %>
-<%= link_to 'Login', sessions_login_path %>
-<%= link_to 'Log Out', sessions_logout_path %>
-<%= current_user.name if current_user %>
 <%= yield %>
 
 </body>
